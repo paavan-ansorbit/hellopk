@@ -34,7 +34,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 # demo/settings.py
-ALLOWED_HOSTS = ["*", ".vercel.app",".now.sh"]  # new
+ALLOWED_HOSTS = [ '.vercel.app','.now.sh','*']  # new
 
 
 # Application definition
