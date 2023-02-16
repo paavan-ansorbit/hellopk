@@ -26,13 +26,13 @@ user_data_input = {
 # create user using User model and add to mongodb
 
 def get_user(request): 
-    users = []
-    user_details = userCollection.find({})
-    for doc in user_details:
-        doc['_id'] = str(doc['_id'])
-        users.append(doc)
-    return JsonResponse( {"data":users})
-
+    if request.method=='GET':
+        users = []
+        user_details = userCollection.find({})
+        for doc in user_details:
+            doc['_id'] = str(doc['_id'])
+            users.append(doc)
+        return JsonResponse( {"data":users})
 
 
 @csrf_exempt    
@@ -122,11 +122,3 @@ def delete_all(request):
     else:
         return HttpResponse("Invalid Request")
 
-def index(request):
-    return HttpResponse("Hello, world. Django App is working...")
-
-def ping(request):
-    return HttpResponse("pong🏓")
-
-def version(request):
-    return JsonResponse({"version": "1.0.0", "status": "ok"})
